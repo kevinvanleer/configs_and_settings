@@ -25,7 +25,7 @@
 [mergetool "meld"]
 	#cmd = meld $LOCAL $BASE $REMOTE
 	#cmd = meld $LOCAL $BASE $REMOTE --output $MERGED
-	cmd = meld --auto-merge --output $MERGED $LOCAL $BASE $REMOTE --diff $BASE $LOCAL --diff $BASE $REMOTE
+	cmd = meld --auto-merge --output=$MERGED $LOCAL $BASE $REMOTE --diff $BASE $LOCAL --diff $BASE $REMOTE
 	conflictstyle = diff3
 	trustExitCode = false
 [diff]
