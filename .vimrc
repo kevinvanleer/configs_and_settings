@@ -33,7 +33,7 @@ set ignorecase
 set smartcase
 
 " Set initial window size
-set lines=80 columns=100
+" set lines=80 columns=100
 
 " Copy indentation down lines
 set shiftround
