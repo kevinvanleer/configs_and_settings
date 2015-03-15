@@ -49,7 +49,7 @@ filetype plugin indent on
 set hlsearch
 
 " Remove whitespace from end of line
-autocmd FileType c,cpp,java,php,py,yaml,protein autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType c,cpp,java,php,py,yaml,xml,html,js,protein autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 "set makeprg=ninja\ -C\ /local/devel/vcs_trunk/shared_debug
 set makeprg=ninja\ -C\ ${PWD}
