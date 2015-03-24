@@ -32,3 +32,5 @@
 	tool = meld
 [difftool "meld"]
 	cmd = meld $LOCAL $REMOTE
+[core]
+	editor = /usr/bin/vim
