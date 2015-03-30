@@ -62,6 +62,12 @@ let g:autopep8_ignore="E203,E221,E401"
 " vim-flake8
 let g:flake8_ignore="E203,E221,E401"
 
+" FuzzyFinder
+map <F2> :FufBuffer <CR>
+map <F3> :FufFile <CR>
+map <F4> :FufLine <CR>
+
+
 set nowrap
 " set gfn=Monospace\ 8
 
