@@ -17,3 +17,4 @@ alias cgrep='grep -R --exclude-dir=.svn --include=*.cpp --include=*.h'
 
 alias preview='open /Applications/Preview.app'
 alias conduce='/opt/mct/sluice/bin/sluice-run -r -D'
+alias condev='./condev'

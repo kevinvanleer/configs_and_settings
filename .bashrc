@@ -14,3 +14,5 @@ export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_C
 # Don't put duplicate lines in the history.
 #export HISTCONTROL=ignoredups
 export HISTCONTROL=ignoredups:erasedups
+
+export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig":${PKG_CONFIG_PATH}

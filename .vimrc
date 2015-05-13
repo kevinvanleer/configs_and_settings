@@ -34,6 +34,12 @@ Plugin 'vim-scripts/FuzzyFinder'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'tell-k/vim-autopep8'
+" Plugin 'jiangmiao/auto-pairs' don't like
+" Plugin 'Townk/vim-autoclose' don't like
+Plugin 'Rip-Rip/clang_complete'
+Plugin 'guns/vim-clojure-static'
+Plugin 'tpope/vim-leiningen'
+Plugin 'tpope/vim-fireplace'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -51,6 +57,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " vim-clang-format
+let g:clang_format#code_style="llvm"
 let g:clang_format#detect_style_file=1
 let g:clang_format#auto_format=1
 let g:clang_format#auto_format_on_insert_leave=1
@@ -89,8 +96,8 @@ set nomodeline
 
 " Set indent and tab; convert tabs to spaces
 set noexpandtab
-set copyindent
-set preserveindent
+"set copyindent
+"set preserveindent
 set shiftwidth=4
 set softtabstop=0
 set tabstop=4
@@ -106,7 +113,7 @@ set smartcase
 " set lines=80 columns=100
 
 " Copy indentation down lines
-set shiftround
+"set shiftround
 "set autoindent
 
 " Highlight all search matches

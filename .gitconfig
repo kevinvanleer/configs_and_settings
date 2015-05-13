@@ -11,15 +11,16 @@
 	update = fetch
 	stat = status
 	co = checkout
+	ch = checkout
 	ci = commit -a
 	st = status
-	ch = checkout
 	cl = clone
 	br = branch
 	rs = reset
 	rb = rebase
 	lol = log --oneline --graph --decorate
 	lola = log --all --oneline --graph --decorate
+    cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
 [merge]
 	tool = meld
 [mergetool "meld"]
