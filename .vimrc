@@ -29,7 +29,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 "My plugins
 Plugin 'kana/vim-operator-user'
 Plugin 'rhysd/vim-clang-format'
-Plugin 'vim-scripts/Smart-Tabs'
+"Plugin 'vim-scripts/Smart-Tabs'
 Plugin 'vim-scripts/FuzzyFinder'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'nvie/vim-flake8'
@@ -40,6 +40,8 @@ Plugin 'Rip-Rip/clang_complete'
 Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-leiningen'
 Plugin 'tpope/vim-fireplace'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mfukar/robotframework-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -73,6 +75,8 @@ let g:flake8_ignore="E203,E221,E401"
 map <F2> :FufBuffer <CR>
 map <F3> :FufFile <CR>
 map <F4> :FufLine <CR>
+map <F5> [(
+map <F6> ])
 
 
 set nowrap
@@ -95,16 +99,16 @@ set title
 set nomodeline
 
 " Set indent and tab; convert tabs to spaces
-set noexpandtab
+set expandtab
 "set copyindent
 "set preserveindent
 set shiftwidth=4
 set softtabstop=0
-set tabstop=4
+set tabstop=8
 "set smarttab
-"set smartindent
-"set autoindent
-"set cindent
+set smartindent
+set autoindent
+set cindent
 
 set ignorecase
 set smartcase
@@ -117,10 +121,14 @@ set smartcase
 "set autoindent
 
 " Highlight all search matches
-set hlsearch
+set hlsearch incsearch
 
 " Remove whitespace from end of line
 autocmd FileType c,cpp,java,php,py,yaml,xml,html,js,protein autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+
+" highlight KeywordSeparator guibg=#303030 guifg=darkgreen gui=underline
+" syntax KeywordSeparator /  /
 
 "set makeprg=ninja\ -C\ /local/devel/vcs_trunk/shared_debug
 set makeprg=ninja\ -C\ ${PWD}
@@ -143,20 +151,3 @@ set switchbuf=useopen,usetab,newtab
 au BufNewFile,BufRead *.ipp set filetype=cpp
 autocmd FileType c,cpp,h,hpp,slang set cindent smartindent
 autocmd FileType make set noexpandtab
-command -nargs=+ SReplace call StepReplace(<f-args>)
-function StepReplace(...)
-  if a:0 == 1
-    let @y = input("Replace with: ", @y)
-    let y = @y
-    if @y =~ "\\d\\+$"
-      let n = substitute(@y, ".\\{-}\\(\\d\\+\\)$", "\\1", "") + a:1
-      let @y = substitute(@y, "\\(.\\{-}\\)\\d\\+$", "\\1".n, "")
-    endif
-    return y
-  elseif a:0 == 3
-    let @y = a:2
-    execute "%s/".a:1."/\\=StepReplace(".a:3.")/".(&gdefault ? "" : "g")."c"
-  else
-    echo "Usage: SReplace <search> <substitute> <increment>"
-  endif
-endfunction
