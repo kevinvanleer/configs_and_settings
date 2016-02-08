@@ -64,6 +64,7 @@ let g:clang_format#detect_style_file=1
 let g:clang_format#auto_format=1
 let g:clang_format#auto_format_on_insert_leave=1
 let g:clang_format#auto_formatexpr=1
+let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
 
 " vim-autopep8
 let g:autopep8_ignore="E203,E221,E401"
