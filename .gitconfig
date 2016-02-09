@@ -2,7 +2,7 @@
 	name = Kevin Van Leer
 	email = kvl@conduce.com
 [push]
-	default = simple
+	default = current
 [pull]
 	rebase = true
 [log]
