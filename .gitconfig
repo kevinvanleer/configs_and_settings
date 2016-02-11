@@ -35,3 +35,5 @@
 	cmd = meld $LOCAL $REMOTE
 [core]
 	editor = /usr/bin/vim
+[color]
+	ui = auto
