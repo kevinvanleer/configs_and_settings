@@ -28,12 +28,12 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 "My plugins
 Plugin 'kana/vim-operator-user'
-Plugin 'rhysd/vim-clang-format'
+" Plugin 'rhysd/vim-clang-format' autoformat instead
 "Plugin 'vim-scripts/Smart-Tabs'
 Plugin 'vim-scripts/FuzzyFinder'
 Plugin 'vim-scripts/taglist.vim'
-Plugin 'nvie/vim-flake8'
-Plugin 'tell-k/vim-autopep8'
+" Plugin 'nvie/vim-flake8' autoformat instead
+" Plugin 'tell-k/vim-autopep8' autoformat instead
 " Plugin 'jiangmiao/auto-pairs' don't like
 " Plugin 'Townk/vim-autoclose' don't like
 Plugin 'Rip-Rip/clang_complete'
@@ -42,6 +42,8 @@ Plugin 'tpope/vim-leiningen'
 Plugin 'tpope/vim-fireplace'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mfukar/robotframework-vim'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'mitsuhiko/vim-jinja.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -59,18 +61,18 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " vim-clang-format
-let g:clang_format#code_style="llvm"
-let g:clang_format#detect_style_file=1
-let g:clang_format#auto_format=1
-let g:clang_format#auto_format_on_insert_leave=1
-let g:clang_format#auto_formatexpr=1
-let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
+"let g:clang_format#code_style="llvm"
+"let g:clang_format#detect_style_file=1
+"let g:clang_format#auto_format=1
+"let g:clang_format#auto_format_on_insert_leave=0
+"let g:clang_format#auto_formatexpr=1
+"let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
 
 " vim-autopep8
-let g:autopep8_ignore="E203,E221,E401"
+"let g:autopep8_ignore="E203,E221,E401"
 
 " vim-flake8
-let g:flake8_ignore="E203,E221,E401"
+"let g:flake8_ignore="E203,E221,E401"
 
 " FuzzyFinder
 map <F2> :FufBuffer <CR>
@@ -124,9 +126,13 @@ set smartcase
 " Highlight all search matches
 set hlsearch incsearch
 
-" Remove whitespace from end of line
-autocmd FileType c,cpp,java,php,py,yaml,xml,html,js,protein autocmd BufWritePre <buffer> :%s/\s\+$//e
-
+augroup format
+  autocmd!
+  " Remove whitespace from end of line
+  autocmd FileType c,cpp,java,php,py,yaml,xml,html,javascript,protein autocmd BufWritePre,BufRead <buffer> :%s/\s\+$//e
+  autocmd FileType c,cpp,java,php,py,yaml,xml,html,javascript autocmd BufWritePre,BufRead <buffer> :Autoformat
+  autocmd FileType html,javascript,css autocmd BufWritePre,BufRead <buffer> :set shiftwidth=2
+augroup END
 
 " highlight KeywordSeparator guibg=#303030 guifg=darkgreen gui=underline
 " syntax KeywordSeparator /  /
