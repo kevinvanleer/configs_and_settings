@@ -23,7 +23,7 @@ alias awssh='~/scripts/awssh.sh'
 #VAGRANT/K8S
 alias vssh='vagrant ssh'
 alias vmake='${HOME}/src/everything/scripts/vmake'
-alias make='vmake'
+#alias make='vmake'
 alias kstart='${HOME}/src/everything/scripts/kstart'
 alias kstop='${HOME}/src/everything/scripts/kstop'
 alias klog='${HOME}/src/everything/scripts/klog'
