@@ -43,7 +43,17 @@ Plugin 'tpope/vim-fireplace'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mfukar/robotframework-vim'
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'mitsuhiko/vim-jinja.git'
+" Plugin 'mitsuhiko/vim-jinja.git' not working right
+Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'venantius/vim-cljfmt'
+Plugin 'cemerick/piggieback'
+Plugin 'Shougo/neocomplete'
+Plugin 'jaxbot/browserlink.vim'
+Plugin 'tpope/vim-surround'
+"Plugin 'valloric/youcompleteme'
+Plugin 'mbbill/undotree'
+Plugin 'bling/vim-airline'
+Plugin 'alvan/vim-closetag'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -60,13 +70,13 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-" vim-clang-format
+"" vim-clang-format
 "let g:clang_format#code_style="llvm"
 "let g:clang_format#detect_style_file=1
 "let g:clang_format#auto_format=1
 "let g:clang_format#auto_format_on_insert_leave=0
 "let g:clang_format#auto_formatexpr=1
-"let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
+let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
 
 " vim-autopep8
 "let g:autopep8_ignore="E203,E221,E401"
@@ -80,15 +90,13 @@ map <F3> :FufFile <CR>
 map <F4> :FufLine <CR>
 map <F5> [(
 map <F6> ])
+map <F7> :UndotreeToggle <CR>
 
 
 set nowrap
 " set gfn=Monospace\ 8
 
 colorscheme slate
-
-" Clear existing autocommands
-autocmd!
 
 " Enable syntax highlighting in terminals which can display colors:
 if has('syntax') && (&t_Co > 2)
@@ -126,12 +134,12 @@ set smartcase
 " Highlight all search matches
 set hlsearch incsearch
 
-augroup format
-  autocmd!
-  " Remove whitespace from end of line
-  autocmd FileType c,cpp,java,php,py,yaml,xml,html,javascript,protein autocmd BufWritePre,BufRead <buffer> :%s/\s\+$//e
-  autocmd FileType c,cpp,java,php,py,yaml,xml,html,javascript autocmd BufWritePre,BufRead <buffer> :Autoformat
-  autocmd FileType html,javascript,css autocmd BufWritePre,BufRead <buffer> :set shiftwidth=2
+augroup kvl_format
+    autocmd!
+    " Remove whitespace from end of line
+    autocmd FileType c,cpp,java,php,py,yaml,xml,html,javascript,protein,python,shell :autocmd! BufWritePre <buffer> :%s/\s\+$//e
+    autocmd FileType c,cpp,java,php,py,xml,html,javascript :autocmd! BufWritePre <buffer> :Autoformat
+    autocmd FileType html,javascript,css :set shiftwidth=2
 augroup END
 
 " highlight KeywordSeparator guibg=#303030 guifg=darkgreen gui=underline
@@ -158,3 +166,5 @@ set switchbuf=useopen,usetab,newtab
 au BufNewFile,BufRead *.ipp set filetype=cpp
 autocmd FileType c,cpp,h,hpp,slang set cindent smartindent
 autocmd FileType make set noexpandtab
+
+let g:neocomplete#enable_at_startup = 1

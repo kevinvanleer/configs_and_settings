@@ -11,6 +11,8 @@
     update = fetch
     stat = status
     co = checkout
+    cob = checkout -b
+    mb = checkout -b
     ch = checkout
     ci = commit -a
     st = status
@@ -24,6 +26,7 @@
     rbs = rebase --skip
     rbi = rebase -i HEAD~6
     rbf = rebase -i HEAD~2
+    cp = cherry-pick
     squash = rebase -i --autosquash HEAD~6
     shove = push --force
     lol = log --oneline --graph --decorate
