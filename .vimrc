@@ -28,18 +28,32 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 "My plugins
 Plugin 'kana/vim-operator-user'
-Plugin 'rhysd/vim-clang-format'
-Plugin 'vim-scripts/Smart-Tabs'
+" Plugin 'rhysd/vim-clang-format' autoformat instead
+"Plugin 'vim-scripts/Smart-Tabs'
 Plugin 'vim-scripts/FuzzyFinder'
 Plugin 'vim-scripts/taglist.vim'
-Plugin 'nvie/vim-flake8'
-Plugin 'tell-k/vim-autopep8'
+" Plugin 'nvie/vim-flake8' autoformat instead
+" Plugin 'tell-k/vim-autopep8' autoformat instead
 " Plugin 'jiangmiao/auto-pairs' don't like
 " Plugin 'Townk/vim-autoclose' don't like
 Plugin 'Rip-Rip/clang_complete'
 Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-leiningen'
 Plugin 'tpope/vim-fireplace'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mfukar/robotframework-vim'
+Plugin 'Chiel92/vim-autoformat'
+" Plugin 'mitsuhiko/vim-jinja.git' not working right
+Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'venantius/vim-cljfmt'
+Plugin 'cemerick/piggieback'
+Plugin 'Shougo/neocomplete'
+Plugin 'jaxbot/browserlink.vim'
+Plugin 'tpope/vim-surround'
+"Plugin 'valloric/youcompleteme'
+Plugin 'mbbill/undotree'
+Plugin 'bling/vim-airline'
+Plugin 'alvan/vim-closetag'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -56,32 +70,33 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-" vim-clang-format
-let g:clang_format#code_style="llvm"
-let g:clang_format#detect_style_file=1
-let g:clang_format#auto_format=1
-let g:clang_format#auto_format_on_insert_leave=1
-let g:clang_format#auto_formatexpr=1
+"" vim-clang-format
+"let g:clang_format#code_style="llvm"
+"let g:clang_format#detect_style_file=1
+"let g:clang_format#auto_format=1
+"let g:clang_format#auto_format_on_insert_leave=0
+"let g:clang_format#auto_formatexpr=1
+let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
 
 " vim-autopep8
-let g:autopep8_ignore="E203,E221,E401"
+"let g:autopep8_ignore="E203,E221,E401"
 
 " vim-flake8
-let g:flake8_ignore="E203,E221,E401"
+"let g:flake8_ignore="E203,E221,E401"
 
 " FuzzyFinder
 map <F2> :FufBuffer <CR>
 map <F3> :FufFile <CR>
 map <F4> :FufLine <CR>
+map <F5> [(
+map <F6> ])
+map <F7> :UndotreeToggle <CR>
 
 
 set nowrap
 " set gfn=Monospace\ 8
 
 colorscheme slate
-
-" Clear existing autocommands
-autocmd!
 
 " Enable syntax highlighting in terminals which can display colors:
 if has('syntax') && (&t_Co > 2)
@@ -95,16 +110,16 @@ set title
 set nomodeline
 
 " Set indent and tab; convert tabs to spaces
-set noexpandtab
+set expandtab
 "set copyindent
 "set preserveindent
 set shiftwidth=4
 set softtabstop=0
-set tabstop=4
+set tabstop=8
 "set smarttab
-"set smartindent
-"set autoindent
-"set cindent
+set smartindent
+set autoindent
+set cindent
 
 set ignorecase
 set smartcase
@@ -117,10 +132,18 @@ set smartcase
 "set autoindent
 
 " Highlight all search matches
-set hlsearch
+set hlsearch incsearch
 
-" Remove whitespace from end of line
-autocmd FileType c,cpp,java,php,py,yaml,xml,html,js,protein autocmd BufWritePre <buffer> :%s/\s\+$//e
+augroup kvl_format
+    autocmd!
+    " Remove whitespace from end of line
+    autocmd FileType c,cpp,java,php,py,yaml,xml,html,javascript,protein,python,shell :autocmd! BufWritePre <buffer> :%s/\s\+$//e
+    autocmd FileType c,cpp,java,php,py,xml,html,javascript :autocmd! BufWritePre <buffer> :Autoformat
+    autocmd FileType html,javascript,css :set shiftwidth=2
+augroup END
+
+" highlight KeywordSeparator guibg=#303030 guifg=darkgreen gui=underline
+" syntax KeywordSeparator /  /
 
 "set makeprg=ninja\ -C\ /local/devel/vcs_trunk/shared_debug
 set makeprg=ninja\ -C\ ${PWD}
@@ -143,20 +166,5 @@ set switchbuf=useopen,usetab,newtab
 au BufNewFile,BufRead *.ipp set filetype=cpp
 autocmd FileType c,cpp,h,hpp,slang set cindent smartindent
 autocmd FileType make set noexpandtab
-command -nargs=+ SReplace call StepReplace(<f-args>)
-function StepReplace(...)
-  if a:0 == 1
-    let @y = input("Replace with: ", @y)
-    let y = @y
-    if @y =~ "\\d\\+$"
-      let n = substitute(@y, ".\\{-}\\(\\d\\+\\)$", "\\1", "") + a:1
-      let @y = substitute(@y, "\\(.\\{-}\\)\\d\\+$", "\\1".n, "")
-    endif
-    return y
-  elseif a:0 == 3
-    let @y = a:2
-    execute "%s/".a:1."/\\=StepReplace(".a:3.")/".(&gdefault ? "" : "g")."c"
-  else
-    echo "Usage: SReplace <search> <substitute> <increment>"
-  endif
-endfunction
+
+let g:neocomplete#enable_at_startup = 1
