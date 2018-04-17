@@ -41,3 +41,7 @@ alias mrt='${HOME}/src/everything/scripts/make_run_test'
 alias rtest='${HOME}/src/everything/scripts/rest-test-run'
 alias ztest='${HOME}/src/everything/scripts/zmq-test-run'
 alias proctor='${HOME}/src/everything/scripts/proctor'
+alias reset-camera='sudo killall VDCAssistant'
+
+alias python='python2'
+alias add-vpn-route='sudo route -n add -net 10.1.0.0/16 10.0.255.1'

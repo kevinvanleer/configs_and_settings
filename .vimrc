@@ -56,6 +56,8 @@ Plugin 'bling/vim-airline'
 Plugin 'alvan/vim-closetag'
 Plugin 'prettier/vim-prettier'
 Plugin 'w0rp/ale'
+Plugin 'Rykka/riv.vim'
+"Plugin 'reedes/vim-lexical' very slow completions
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -139,15 +141,24 @@ set hlsearch incsearch
 augroup kvl_format
     autocmd!
     " Remove whitespace from end of line
-    autocmd FileType c,cpp,java,php,py,yaml,xml,html,protein,python,shell :autocmd! BufWritePre <buffer> :%s/\s\+$//e
-    autocmd FileType c,cpp,java,php,py,xml,html :autocmd! BufWritePre <buffer> :Autoformat
-    autocmd FileType html,javascript,css :set shiftwidth=2
-
+    autocmd FileType c,cpp,java,php,python,py,yaml,xml,html,protein,shell,rst,md,yaml :autocmd! BufWritePre <buffer> :%s/\s\+$//e
+    autocmd FileType c,cpp,java,php,python,py,xml,html :autocmd! BufWritePre <buffer> :Autoformat
+    
     " when running at every change you may want to disable quickfix
     let g:prettier#quickfix_enabled = 0
 
     let g:prettier#autoformat = 0
     autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+augroup END
+
+augroup kvl_wrap_text
+    autocmd!
+    autocmd FileType rst,tex setlocal wrap
+augroup END
+
+augroup vimrc_hooks
+    autocmd!
+    autocmd BufWritePost .vimrc source ~/.vimrc
 augroup END
 
 " highlight KeywordSeparator guibg=#303030 guifg=darkgreen gui=underline
@@ -171,8 +182,21 @@ cnoreabbrev <expr> install ((getcmdtype() is# ':' && getcmdline() is# "install")
 
 set switchbuf=useopen,usetab,newtab
 
-au BufNewFile,BufRead *.ipp set filetype=cpp
-autocmd FileType c,cpp,h,hpp,slang set cindent smartindent
-autocmd FileType make set noexpandtab
+augroup cpp_stuff
+    autocmd!
+    au BufNewFile,BufRead *.ipp set filetype=cpp
+    autocmd FileType c,cpp,h,hpp,slang set cindent smartindent
+    autocmd FileType make set noexpandtab
+augroup END
+
+augroup lexical
+  autocmd!
+  autocmd FileType markdown,mkd setlocal spell
+  autocmd FileType textile setlocal spell
+  autocmd FileType text setlocal spell
+  autocmd FileType rst setlocal spell
+  autocmd FileType tex setlocal spell
+  autocmd FileType python,html,js,yaml setlocal spell
+augroup END
 
 let g:neocomplete#enable_at_startup = 1

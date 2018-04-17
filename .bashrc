@@ -23,6 +23,4 @@ export HISTCONTROL=ignoredups:erasedups
 
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig":${PKG_CONFIG_PATH}
 
-export KUBERNETES_MASTER=http://172.17.8.101:8080
-
 export PATH=${PATH}:${HOME}/scripts
