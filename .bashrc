@@ -1,5 +1,6 @@
 export CLICOLOR=1
 source ~/.bash-aliases
+set -o vi
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion

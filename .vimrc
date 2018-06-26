@@ -54,6 +54,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'mbbill/undotree'
 Plugin 'bling/vim-airline'
 Plugin 'alvan/vim-closetag'
+Plugin 'prettier/vim-prettier'
+Plugin 'w0rp/ale'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -137,9 +139,15 @@ set hlsearch incsearch
 augroup kvl_format
     autocmd!
     " Remove whitespace from end of line
-    autocmd FileType c,cpp,java,php,py,yaml,xml,html,javascript,protein,python,shell :autocmd! BufWritePre <buffer> :%s/\s\+$//e
-    autocmd FileType c,cpp,java,php,py,xml,html,javascript :autocmd! BufWritePre <buffer> :Autoformat
+    autocmd FileType c,cpp,java,php,py,yaml,xml,html,protein,python,shell :autocmd! BufWritePre <buffer> :%s/\s\+$//e
+    autocmd FileType c,cpp,java,php,py,xml,html :autocmd! BufWritePre <buffer> :Autoformat
     autocmd FileType html,javascript,css :set shiftwidth=2
+
+    " when running at every change you may want to disable quickfix
+    let g:prettier#quickfix_enabled = 0
+
+    let g:prettier#autoformat = 0
+    autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 augroup END
 
 " highlight KeywordSeparator guibg=#303030 guifg=darkgreen gui=underline
