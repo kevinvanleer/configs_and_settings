@@ -1,5 +1,15 @@
 #!/bin/bash -e
 
+until [ -d .git ] ; do
+    if [ `pwd` == '/' ] ; then
+        echo "Couldn't find Git repo. Exiting..."
+        exit
+    fi
+    cd ..
+done
+
+echo "syncing branch with $(basename `pwd`)/develop"
+
 source "$(git --exec-path)/git-sh-setup"
 
 BRANCH="develop"
