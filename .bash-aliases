@@ -13,6 +13,7 @@ alias mv="mv -v"
 alias tcpdump='sudo tcpdump'
 alias cgrep='grep -RI --exclude-dir=.svn --include=*.c* --include=*.h*'
 alias sgrep='grep -RI --exclude-dir=target --exclude-dir=artifacts'
+alias reactgrep='grep -RI --exclude-dir={__test__,node_modules,build,coverage,reference_cards}'
 
 alias git='/usr/local/bin/git'
 alias preview='open /Applications/Preview.app'
@@ -43,5 +44,4 @@ alias ztest='${HOME}/src/everything/scripts/zmq-test-run'
 alias proctor='${HOME}/src/everything/scripts/proctor'
 alias reset-camera='sudo killall VDCAssistant'
 
-alias python='python2'
 alias add-vpn-route='sudo route -n add -net 10.1.0.0/16 10.0.255.1'

@@ -8,7 +8,7 @@ fi
 
 # export PS1="[\\u@\\h \\W]$ "
 
-export PS1='\[\e[1;32m\]\h:\W \u\$\[\e[0m\] '
+export PS1='\[\e[1;32m\][\t] \h:\W \u\$\[\e[0m\] '
 umask 002
 
 # Make Bash append rather than overwrite the history on disk:
@@ -23,4 +23,8 @@ export HISTCONTROL=ignoredups:erasedups
 
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig":${PKG_CONFIG_PATH}
 
-export PATH=${PATH}:${HOME}/scripts
+export PATH=${HOME}/scripts:${PATH}
+
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi

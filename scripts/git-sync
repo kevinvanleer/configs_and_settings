@@ -8,14 +8,14 @@ until [ -d .git ] ; do
     cd ..
 done
 
-echo "syncing branch with $(basename `pwd`)/develop"
-
-source "$(git --exec-path)/git-sh-setup"
-
 BRANCH="develop"
 if [ "$1" != "" ] ; then
     BRANCH=$1
 fi
+
+echo "syncing branch with $(basename `pwd`)/$BRANCH"
+
+source "$(git --exec-path)/git-sh-setup"
 
 if [[ $(git diff --shortstat) ]] ; then
     STASH="POP"
