@@ -14,6 +14,7 @@ for f in $FILES ; do
   echo $f
   echo $BASEDIR/$f
   echo $HOME/$f
+  mkdir -p $(dirname $HOME/$f)
   ln -sf $(readlink -f $BASEDIR/$f) $HOME/$f
 done
 
@@ -25,5 +26,6 @@ for f in $FILES ; do
   echo $f
   echo $BASEDIR/$f
   echo $HOME/$f
+  mkdir -p $(dirname $HOME/$f)
   ln -sf $(readlink -f $BASEDIR/$f) $HOME/$f
 done

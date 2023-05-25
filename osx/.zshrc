@@ -21,10 +21,8 @@ export PATH=$PATH:$HOME/Library/flutter/bin
 # Copied from .bashrc
 export PATH="$PATH:/Users/kvl/.local/bin"
 
-eval "$(starship init zsh)"
-
 if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
   autoload -Uz compinit
   compinit
 fi
@@ -50,3 +48,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 alias vv=/Applications/Neovide.app/Contents/MacOS/neovide
 export NEOVIDE_FRAMELESS=true
 export NEOVIDE_FRAME=none
+
+eval "$(starship init zsh)"
+
