@@ -112,3 +112,10 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH:$HOME/pkg/flutter/bin"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+set -o vi

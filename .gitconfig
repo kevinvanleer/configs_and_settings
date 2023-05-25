@@ -1,6 +1,6 @@
 [user]
     name = Kevin Van Leer
-    email = kvl@conduce.com
+    email = kevin.vanleer@gmail.com
 [push]
     default = simple
 [pull]
@@ -20,18 +20,19 @@
     br = branch
     rs = reset
     rb = rebase
-    rbd = rebase develop
+    rbm = rebase main
     rbc = rebase --continue
     rba = rebase --abort
     rbs = rebase --skip
-    rbi = rebase -i HEAD~6
+    rbi = rebase -i 
     rbf = rebase -i HEAD~2
-    cp = cherry-pick
+    cherry = cherry-pick
     squash = rebase -i --autosquash HEAD~6
     shove = push --force
     lol = log --oneline --graph --decorate
     lola = log --all --oneline --graph --decorate
     cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
+    revise = commit --amend --no-edit
 [merge]
     tool = meld
 [mergetool "meld"]
@@ -45,4 +46,4 @@
 [difftool "meld"]
     cmd = meld $LOCAL $REMOTE
 [core]
-    editor = /usr/bin/vim
+    editor = /usr/bin/nvim
