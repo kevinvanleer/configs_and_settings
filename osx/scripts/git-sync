@@ -1,0 +1,28 @@
+#!/bin/bash -e
+
+until [ -d .git ] ; do
+    if [ `pwd` == '/' ] ; then
+        echo "Couldn't find Git repo. Exiting..."
+        exit
+    fi
+    cd ..
+done
+
+BRANCH="develop"
+if [ "$1" != "" ] ; then
+    BRANCH=$1
+fi
+
+echo "syncing branch with $(basename `pwd`)/$BRANCH"
+
+source "$(git --exec-path)/git-sh-setup"
+
+if [[ $(git diff --shortstat) ]] ; then
+    STASH="POP"
+    git stash
+fi
+git fetch
+git rebase origin/${BRANCH}
+if [ "${STASH}" == "POP" ] ; then
+    git stash pop
+fi

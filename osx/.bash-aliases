@@ -1,0 +1,47 @@
+#alias vi="vim"
+#alias vi="vim"
+#alias vim="xterm -name xterm-edit -e vim"
+#alias gdb="xterm -name xterm-edit -e gdb"
+#alias e="vi"
+#alias ls="ls --color=tty"
+alias ll="ls -lH"
+alias la="ls -a"
+alias ssh="ssh -X"
+alias rm="rm -v"
+alias cp="cp -v"
+alias mv="mv -v"
+alias tcpdump='sudo tcpdump'
+alias cgrep='grep -RI --exclude-dir=.svn --include=*.c* --include=*.h*'
+alias sgrep='grep -RI --exclude-dir=target --exclude-dir=artifacts'
+alias reactgrep='grep -RI --exclude-dir={__test__,node_modules,build,coverage,reference_cards}'
+
+alias git='/usr/local/bin/git'
+alias preview='open /Applications/Preview.app'
+
+#AWS
+alias awssh='~/scripts/awssh.sh'
+
+#VAGRANT/K8S
+alias vssh='vagrant ssh'
+alias vmake='${HOME}/src/everything/scripts/vmake'
+#alias make='vmake'
+alias kstart='${HOME}/src/everything/scripts/kstart'
+alias kstop='${HOME}/src/everything/scripts/kstop'
+alias klog='${HOME}/src/everything/scripts/klog'
+alias klogf='${HOME}/src/everything/scripts/klog -f'
+alias klogp='${HOME}/src/everything/scripts/klog -p'
+alias rund='${HOME}/src/everything/k8s/run_dev.sh'
+alias runr='${HOME}/src/everything/k8s/run_release.sh'
+alias kc='kubectl'
+alias kcg='kubectl get'
+alias kgp='kubectl get pods'
+alias kgs='kubectl get services'
+alias kgrc='kubectl get replicationcontrollers'
+alias kg='kubectl get pods,rc,services'
+alias mrt='${HOME}/src/everything/scripts/make_run_test'
+alias rtest='${HOME}/src/everything/scripts/rest-test-run'
+alias ztest='${HOME}/src/everything/scripts/zmq-test-run'
+alias proctor='${HOME}/src/everything/scripts/proctor'
+alias reset-camera='sudo killall VDCAssistant'
+
+alias add-vpn-route='sudo route -n add -net 10.1.0.0/16 10.0.255.1'
