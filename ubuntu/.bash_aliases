@@ -14,4 +14,7 @@ alias cmake_debug='cmake -DBUILD_SHARED_LIBS="ON" -DCMAKE_BUILD_TYPE="Debug" ..'
 alias cmake_release='cmake -DBUILD_SHARED_LIBS="OFF" -DCMAKE_BUILD_TYPE="Release" ..'
 alias tcpdump='sudo tcpdump'
 alias cgrep='grep -R --exclude-dir=.svn --include=*.cpp --include=*.h'
+
 alias preview='open /Applications/Preview.app'
+alias conduce='/opt/mct/sluice/bin/sluice-run -r -D'
+alias condev='./condev'
