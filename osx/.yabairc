@@ -1,0 +1,43 @@
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+yabai -m config                                 \
+        focus_follows_mouse     off             \
+        mouse_follows_focus     off             \
+        window_placement        second_child    \
+        window_topmost          off             \
+        layout                  bsp             \
+        top_padding             0               \
+        bottom_padding          0               \
+        left_padding            0               \
+        right_padding           0               \
+        window_gap              0               \
+        window_opacity          on              \
+        active_window_opacity   1.0             \
+        normal_window_opacity   0.9             \
+        window_border           on              \
+        window_border_width     2               \
+        active_window_border_color 0xff00ff00   \
+        normal_window_border_color 0x22ffffff
+
+# float system preferences
+#yabai -m rule --add app='^System Information$' manage=off
+#yabai -m rule --add app='^System Preferences$' manage=off
+#yabai -m rule --add title='Preferences$' manage=off
+
+# float settings windows
+#yabai -m rule --add title='Settings$' manage=off
+
+# make child windows float -- not sure which works
+# https://github.com/koekeishiya/yabai/issues/384
+yabai -m rule --add app="^Android Studio$" title="^Welcome to Android Studio$" manage=off
+yabai -m rule --add app="^Android Studio$" title="^Rename.*$" manage=off
+yabai -m rule --add app="^Android Studio$" title="^New.*$" manage=off
+#yabai -m rule --add app="^Android Studio$" title="^.*$" manage=off
+yabai -m rule --add app="Microsoft Teams" title="^.*$" manage=off
+yabai -m rule --add app="^zoom.us$" manage=off
+yabai -m rule --add subrole="kAXDialogSubrole" manage=off
+yabai -m rule --add subrole="kAXSystemDialogSubrole" manage=off
+yabai -m rule --add subrole="kAXSystemDialogSubrole" manage=off
+yabai -m rule --add subrole="kAXFloatingWindowSubrole" manage=off
+yabai -m rule --add subrole="kAXSystemFloatingWindowSubrole" manage=off

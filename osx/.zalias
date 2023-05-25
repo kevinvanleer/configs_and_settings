@@ -1,0 +1,7 @@
+alias ls="lsd"
+alias ll="lsd -l"
+alias la="lsd -a"
+alias ssh="ssh -X"
+alias rm="rm -v"
+alias cp="xcp"
+alias mv="mv -v"
