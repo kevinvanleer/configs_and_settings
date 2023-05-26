@@ -10,37 +10,21 @@ Plug 'vim-scripts/L9'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 Plug 'kana/vim-operator-user'
-"Plug 'vim-scripts/Smart-Tabs'
-"Plug 'vim-scripts/FuzzyFinder'
 Plug 'vim-scripts/taglist.vim'
-" Plug 'nvie/vim-flake8' autoformat instead
-" Plug 'tell-k/vim-autopep8' autoformat instead
-" Plug 'jiangmiao/auto-pairs' don't like
-" Plug 'Townk/vim-autoclose' don't like
 Plug 'guns/vim-clojure-static'
 Plug 'tpope/vim-leiningen'
 Plug 'tpope/vim-fireplace'
 Plug 'pangloss/vim-javascript'
 Plug 'mfukar/robotframework-vim'
-" Plug 'Chiel92/vim-autoformat'
-" Plug 'mitsuhiko/vim-jinja.git' not working right
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'venantius/vim-cljfmt'
 Plug 'cemerick/piggieback'
-" Plug 'Shougo/neocomplete'
-" Plug 'jaxbot/browserlink.vim'
-" YouCompleteMe no nvim support
-" Plug 'valloric/youcompleteme'
-" Plug 'tabnine/YouCompleteMe'
 Plug 'ms-jpq/coq_nvim'
 Plug 'mbbill/undotree'
 Plug 'bling/vim-airline'
 Plug 'alvan/vim-closetag'
-" Plug 'prettier/vim-prettier'
 Plug 'dense-analysis/ale'
 Plug 'Rykka/riv.vim'
-"Plug 'reedes/vim-lexical' very slow completions
-"Plug 'mxw/vim-jsx'
 Plug 'wojtekmach/vim-rename'
 " Plug 'zxqfl/tabnine-vim'
 Plug 'martinda/Jenkinsfile-vim-syntax'
@@ -72,12 +56,6 @@ filetype plugin indent on    " required
 let g:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
 
 let g:coq_settings = { 'auto_start': 'shut-up' }
-
-" vim-autopep8
-" let g:autopep8_ignore="E203,E221,E401"
-
-" vim-flake8
-"let g:flake8_ignore="E203,E221,E401"
 
 " FuzzyFinder
 map <F2> :tabp <CR>
@@ -147,6 +125,7 @@ augroup END
 augroup vimrc_hooks
     autocmd!
     autocmd BufWritePost .vimrc source ~/.vimrc
+    autocmd BufWritePost .init.vim source ~/.config/nvim/init.vim
 augroup END
 
 " highlight KeywordSeparator guibg=#303030 guifg=darkgreen gui=underline
@@ -155,16 +134,11 @@ augroup END
 "set makeprg=ninja\ -C\ /local/devel/vcs_trunk/shared_debug
 set makeprg=ninja\ -C\ ${PWD}
 set autowrite
-"Auto do something after write (in this case make)
-"autocmd BufWritePost <buffer> make
 
 set autochdir
 set wildmode=longest,list,full
 set wildmenu
 
-"set runtimepath+=$HOME/.vim/plugins/l9
-"set runtimepath+=$HOME/.vim/plugins/fuzzyfinder
-"
 cnoreabbrev <expr> ninja ((getcmdtype() is# ':' && getcmdline() is# "ninja")?("make"):("ninja"))
 cnoreabbrev <expr> install ((getcmdtype() is# ':' && getcmdline() is# "install")?("make install"):("install"))
 
