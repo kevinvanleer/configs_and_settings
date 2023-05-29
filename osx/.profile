@@ -2,7 +2,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.pyenv/shims:$PATH"
-export PATH="$HOME/scripts:$PATH"
 
 export PATH=$PATH:$HOME/tools/flutter/bin
 
