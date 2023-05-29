@@ -123,6 +123,24 @@ ctrl - 0x2F: yabai -m space --focus next
 ctrl - 1: yabai -m space --focus 1 
 ctrl - 2: yabai -m space --focus 2
 ctrl - 3: yabai -m space --focus 3
+ctrl - 4: yabai -m space --focus 4
+ctrl - 5: yabai -m space --focus 5
+ctrl - 6: yabai -m space --focus 6
+ctrl - 7: yabai -m space --focus 7
+ctrl - 8: yabai -m space --focus 8
+ctrl - 9: yabai -m space --focus 9
+ctrl - 0: yabai -m space --focus 0
+
+ctrl + shift - 1: yabai -m space --focus $(yabai -m query --spaces --display 2 | jq 'sort_by(.index)[0].index')
+ctrl + shift - 2: yabai -m space --focus $(yabai -m query --spaces --display 2 | jq 'sort_by(.index)[1].index')
+ctrl + shift - 3: yabai -m space --focus $(yabai -m query --spaces --display 2 | jq 'sort_by(.index)[2].index')
+ctrl + shift - 4: yabai -m space --focus $(yabai -m query --spaces --display 2 | jq 'sort_by(.index)[3].index')
+ctrl + shift - 5: yabai -m space --focus $(yabai -m query --spaces --display 2 | jq 'sort_by(.index)[4].index')
+ctrl + shift - 6: yabai -m space --focus $(yabai -m query --spaces --display 2 | jq 'sort_by(.index)[5].index')
+ctrl + shift - 7: yabai -m space --focus $(yabai -m query --spaces --display 2 | jq 'sort_by(.index)[6].index')
+ctrl + shift - 8: yabai -m space --focus $(yabai -m query --spaces --display 2 | jq 'sort_by(.index)[7].index')
+ctrl + shift - 9: yabai -m space --focus $(yabai -m query --spaces --display 2 | jq 'sort_by(.index)[8].index')
+ctrl + shift - 0: yabai -m space --focus $(yabai -m query --spaces --display 2 | jq 'sort_by(.index)[9].index')
 
 #Focus first space on second display
 ctrl - end: yabai -m space --focus $(yabai -m query --spaces --display 2 | jq 'sort_by(.index)[0].index')
