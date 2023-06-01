@@ -440,8 +440,8 @@ selection:
 #   - (Windows) powershell
 shell:
   program: /bin/zsh
-#  args:
-#    - --login
+  args:
+    - --login
 
 # Startup directory
 #
