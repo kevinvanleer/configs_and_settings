@@ -25,3 +25,9 @@ export NEOVIDE_FRAME=none
 
 eval "$(starship init zsh)"
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/kvl/tools/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kvl/tools/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/kvl/tools/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kvl/tools/google-cloud-sdk/completion.zsh.inc'; fi
