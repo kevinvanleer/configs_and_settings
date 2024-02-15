@@ -92,6 +92,8 @@ alt - 0x21 : yabai -m space --rotate 90
 alt - 0x1E : yabai -m space --rotate 270
 
 # mirror space
+# 2A -> PIPE `|`
+# 1B -> DASH `-`
 alt - 0x2A : yabai -m space --mirror y-axis 
 alt - 0x1B : yabai -m space --mirror x-axis 
 
@@ -252,6 +254,7 @@ alt - p : yabai -m window --toggle sticky --toggle topmost --toggle pip
 
 
 # open terminal
+alt - v : neovide
 alt - return : open -n /Applications/Alacritty.app
 alt - c : open -na "Google Chrome"
 alt - i : open -na "Google Chrome" --args --incognito
