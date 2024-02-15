@@ -30,6 +30,10 @@ yabai -m config                                 \
 
 # make child windows float -- not sure which works
 # https://github.com/koekeishiya/yabai/issues/384
+yabai -m rule --add app="^Autodesk Fusion 360$" manage=off
+yabai -m rule --add app="^Autodesk Fusion 360$" title="^.*$" manage=off
+yabai -m rule --add app="^.*Fusion 360.*$" title="^.*Fusion 360.*$" manage=off
+yabai -m rule --add app="Fusion 360" title="Fusion 360" manage=off
 yabai -m rule --add app="^Android Studio$" title="^Welcome to Android Studio$" manage=off
 yabai -m rule --add app="^Android Studio$" title="^Rename.*$" manage=off
 yabai -m rule --add app="^Android Studio$" title="^New.*$" manage=off
