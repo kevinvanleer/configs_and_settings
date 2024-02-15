@@ -1,6 +1,6 @@
 [user]
-    name = Kevin Van Leer
-    email = kevin.vanleer@gmail.com
+#    name = Kevin Van Leer
+#    email = kevin.vanleer@gmail.com
 [push]
     default = simple
 [pull]
@@ -45,3 +45,11 @@
     tool = meld
 [difftool "meld"]
     cmd = meld $LOCAL $REMOTE
+[core]
+    autocrlf = input
+[includeif "gitdir:~/src/north-capital/**"]
+    path = "~/src/north-capital/.gitconfig"
+[includeif "gitdir:~/src/273ventures/**"]
+    path = "~/src/273ventures/.gitconfig"
+[includeif "gitdir:~/src/lapin/**"]
+    path = "~/src/lapin/.gitconfig"
