@@ -9,6 +9,8 @@ Plug 'vim-scripts/L9'
 " Plug 'wincent/command-t'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 
+Plug 'sheerun/vim-polyglot'
+
 Plug 'kana/vim-operator-user'
 Plug 'vim-scripts/taglist.vim'
 Plug 'guns/vim-clojure-static'
@@ -47,6 +49,12 @@ Plug 'leafgarland/typescript-vim'
 "Plug 'airblade/vim-rooter'
 Plug 'dbakker/vim-projectroot'
 
+Plug 'shmup/vim-sql-syntax'
+
+Plug 'flazz/vim-colorschemes'
+Plug 'xolox/vim-colorscheme-switcher'
+Plug 'xolox/vim-misc'
+
 " All of your Plugs must be added before the following line
 call plug#end()            " required
 filetype plugin indent on    " required
@@ -64,22 +72,25 @@ map <F4> :Autoformat <CR>
 map <F5> [(
 map <F6> ])
 map <F7> :UndotreeToggle <CR>
-map <F8> :so $MYVIMRC <CR>
+map <F12> :so $MYVIMRC <CR>
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 
 
 set nowrap
 " set gfn=Monospace\ 8
 
-colorscheme slate
+" colorscheme slate
+" colorscheme wombat
+colorscheme molokai
+
 " Fix highlighting for brackets
-hi MatchParen cterm=none ctermbg=green ctermfg=blue
+" hi MatchParen cterm=none ctermbg=green ctermfg=blue
 
 " Enable syntax highlighting in terminals which can display colors:
 " Not sure this is necessary
-if has('syntax') && (&t_Co > 2)
-  syntax on
-endif
+" if has('syntax') && (&t_Co > 2)
+"   syntax on
+" endif
 
 " Allow vim to dictate title of xterm window
 set title
@@ -158,6 +169,11 @@ augroup END
 
 augroup projectroot
   :noremap <expr> <leader>ep ':edit '.projectroot#guess().'/'
+augroup END
+
+augroup AstroHack
+    autocmd!
+    au BufNewFile,BufRead *.astro set filetype=javascript.astro
 augroup END
 
 augroup cpp_stuff
