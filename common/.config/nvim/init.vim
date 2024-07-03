@@ -21,7 +21,8 @@ Plug 'mfukar/robotframework-vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'venantius/vim-cljfmt'
 Plug 'cemerick/piggieback'
-Plug 'ms-jpq/coq_nvim'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'mbbill/undotree'
 Plug 'bling/vim-airline'
 Plug 'alvan/vim-closetag'
@@ -81,7 +82,11 @@ set nowrap
 
 " colorscheme slate
 " colorscheme wombat
-colorscheme molokai
+colorscheme mopkai
+" mopkai
+" moriarty
+" molokai-dark
+" moonshine
 
 " Fix highlighting for brackets
 " hi MatchParen cterm=none ctermbg=green ctermfg=blue
@@ -126,6 +131,7 @@ set hlsearch incsearch
 augroup kvl_ale_config
   let g:ale_fix_on_save = 1
   let g:ale_linters_explicit = 1
+  let g:ale_php_cs_fixer_fix_options = '--config ' . fnamemodify(findfile('.php-cs-fixer.php', './;'), ':p')
 augroup END
 
 augroup kvl_wrap_text

@@ -27,6 +27,7 @@
     rbi = rebase -i 
     rbf = rebase -i HEAD~2
     cherry = cherry-pick
+    pick = cherry-pick
     squash = rebase -i --autosquash HEAD~6
     shove = push --force
     lol = log --oneline --graph --decorate
