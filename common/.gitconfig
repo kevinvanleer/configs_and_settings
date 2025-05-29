@@ -24,12 +24,13 @@
     rbc = rebase --continue
     rba = rebase --abort
     rbs = rebase --skip
-    rbi = rebase -i 
-    rbf = rebase -i HEAD~2
+    rbi = rebase -i --autosquash
+    rbf = rebase -i --autosquash HEAD~2
     cherry = cherry-pick
     pick = cherry-pick
+    cp = cherry-pick
     squash = rebase -i --autosquash HEAD~6
-    shove = push --force
+    shove = push --force-with-lease
     lol = log --oneline --graph --decorate
     lola = log --all --oneline --graph --decorate
     cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
@@ -54,3 +55,7 @@
     path = "~/src/273ventures/.gitconfig"
 [includeif "gitdir:~/src/lapin/**"]
     path = "~/src/lapin/.gitconfig"
+[includeif "gitdir:~/src/kvl/**"]
+    path = "~/src/kvl/.gitconfig"
+[rerere]
+    enabled = true
