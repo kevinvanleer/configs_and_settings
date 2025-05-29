@@ -35,3 +35,7 @@ if [ -f '/Users/kvl/tools/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+export AWS_DEFAULT_PROFILE=AdministratorAccess-067245055136
+export PATH="/opt/homebrew/opt/php@8.3/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.3/sbin:$PATH"
