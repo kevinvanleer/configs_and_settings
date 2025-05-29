@@ -1,12 +1,10 @@
 set nocompatible
-filetype off
 
 let g:CommandTPreferredImplementation='lua'
 
 call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'vim-scripts/L9'
-" Plug 'wincent/command-t'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 Plug 'sheerun/vim-polyglot'
@@ -29,7 +27,6 @@ Plug 'alvan/vim-closetag'
 Plug 'dense-analysis/ale'
 Plug 'Rykka/riv.vim'
 Plug 'wojtekmach/vim-rename'
-" Plug 'zxqfl/tabnine-vim'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'shime/vim-livedown'
 Plug 'suan/vim-instant-markdown', {'rtp': 'after'}
@@ -42,7 +39,7 @@ Plug 'kamykn/spelunker.vim'
 
 Plug 'rstacruz/vim-closer'
 
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 
@@ -55,6 +52,10 @@ Plug 'shmup/vim-sql-syntax'
 Plug 'flazz/vim-colorschemes'
 Plug 'xolox/vim-colorscheme-switcher'
 Plug 'xolox/vim-misc'
+Plug 'kevinhwang91/promise-async'
+Plug 'kevinhwang91/nvim-ufo'
+Plug 'robitx/gp.nvim'
+Plug 'neovim/nvim-lspconfig'
 
 " All of your Plugs must be added before the following line
 call plug#end()            " required
@@ -82,11 +83,14 @@ set nowrap
 
 " colorscheme slate
 " colorscheme wombat
-colorscheme mopkai
+" colorscheme mopkai
 " mopkai
-" moriarty
 " molokai-dark
 " moonshine
+colorscheme SlateDark
+" moriarty
+" argonaut
+" skittles_autumn
 
 " Fix highlighting for brackets
 " hi MatchParen cterm=none ctermbg=green ctermfg=blue
@@ -118,6 +122,8 @@ set cindent
 set ignorecase
 set smartcase
 
+set clipboard+=unnamedplus
+
 " Set initial window size
 " set lines=80 columns=100
 
@@ -128,10 +134,15 @@ set smartcase
 " Highlight all search matches
 set hlsearch incsearch
 
+  nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+  nmap <silent> <C-j> <Plug>(ale_next_wrap)
 augroup kvl_ale_config
   let g:ale_fix_on_save = 1
   let g:ale_linters_explicit = 1
   let g:ale_php_cs_fixer_fix_options = '--config ' . fnamemodify(findfile('.php-cs-fixer.php', './;'), ':p')
+  let g:airline#extensions#ale#enabled = 1
+  nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+  nmap <silent> <C-j> <Plug>(ale_next_wrap)
 augroup END
 
 augroup kvl_wrap_text
@@ -169,17 +180,13 @@ augroup fzf
   :nnoremap <silent> <leader>g :ProjectRootExe GFiles<cr>
   :nnoremap <silent> <leader>l :ProjectRootExe Lines<cr>
   :nnoremap <silent> <leader>b :Buffers<cr>
+  :nnoremap <silent> <leader>n :Files ~/src/north-capital<cr>
 " Override commandt for the time being
   :nnoremap <silent> <leader>t :ProjectRootExe GFiles<cr>
 augroup END
 
 augroup projectroot
   :noremap <expr> <leader>ep ':edit '.projectroot#guess().'/'
-augroup END
-
-augroup AstroHack
-    autocmd!
-    au BufNewFile,BufRead *.astro set filetype=javascript.astro
 augroup END
 
 augroup cpp_stuff
@@ -206,3 +213,5 @@ set guioptions-=m
 set guioptions-=T
 set guioptions-=r
 set guifont=Hack\ Nerd\ Font:h11
+
+lua require('init')
