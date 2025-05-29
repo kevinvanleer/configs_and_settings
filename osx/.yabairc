@@ -21,12 +21,14 @@ yabai -m config                                 \
         normal_window_border_color 0x22ffffff
 
 # float system preferences
-#yabai -m rule --add app='^System Information$' manage=off
-#yabai -m rule --add app='^System Preferences$' manage=off
-#yabai -m rule --add title='Preferences$' manage=off
+yabai -m rule --add app='^System Information$' manage=off
+yabai -m rule --add app='^System Preferences$' manage=off
+yabai -m rule --add title='^Preferences' manage=off
 
 # float settings windows
-#yabai -m rule --add title='Settings$' manage=off
+yabai -m rule --add app='^System Settings$' manage=off
+yabai -m rule --add title='^Settings' manage=off
+yabai -m rule --add title='^System' manage=off
 
 # make child windows float -- not sure which works
 # https://github.com/koekeishiya/yabai/issues/384
@@ -45,3 +47,5 @@ yabai -m rule --add subrole="kAXSystemDialogSubrole" manage=off
 yabai -m rule --add subrole="kAXSystemDialogSubrole" manage=off
 yabai -m rule --add subrole="kAXFloatingWindowSubrole" manage=off
 yabai -m rule --add subrole="kAXSystemFloatingWindowSubrole" manage=off
+
+borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 &
