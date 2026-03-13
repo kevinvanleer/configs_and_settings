@@ -8,11 +8,8 @@ export PATH=$PATH:$HOME/tools/flutter/bin
 # Created by `pipx` on 2022-07-26 13:23:20
 # Copied from .bashrc
 export PATH="$PATH:/Users/kvl/.local/bin"
-export NVM_DIR=~/.nvm
-. $(brew --prefix nvm)/nvm.sh
 
 #Rust packages
-export PATH="$HOME/.cargo/bin:$PATH"
 
 # Dart packages
 export PATH="$PATH":"$HOME/.pub-cache/bin"
@@ -24,3 +21,4 @@ ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools/bin:$PATH"
 
 export PATH="$PATH:$HOME/bin"
+. "$HOME/.cargo/env"

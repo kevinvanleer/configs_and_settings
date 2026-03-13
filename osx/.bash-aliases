@@ -5,7 +5,7 @@
 #alias e="vi"
 #alias ls="ls --color=tty"
 alias ll="ls -lH"
-alias la="ls -a"
+alias la="ls -A"
 alias ssh="ssh -X"
 alias rm="rm -v"
 alias cp="cp -v"

@@ -1,4 +1,13 @@
-set -o vi
+#set -o vi
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+
+# Reduce ESC key delay from 0.4s to 0.01s
+export KEYTIMEOUT=1
+
+
 
 source ~/.zalias
 
@@ -25,6 +34,12 @@ export NEOVIDE_FRAME=none
 
 eval "$(starship init zsh)"
 
+# Fix for vi-mode prompt jumping
+zle-keymap-select() {
+    STARSHIP_KEYMAP=$KEYMAP
+    zle reset-prompt
+}
+zle -N zle-keymap-select
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/kvl/tools/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kvl/tools/google-cloud-sdk/path.zsh.inc'; fi
@@ -39,3 +54,22 @@ export NVM_DIR="$HOME/.nvm"
 export AWS_DEFAULT_PROFILE=AdministratorAccess-067245055136
 export PATH="/opt/homebrew/opt/php@8.3/bin:$PATH"
 export PATH="/opt/homebrew/opt/php@8.3/sbin:$PATH"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/kvl/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+# bun completions
+[ -s "/Users/kvl/.bun/_bun" ] && source "/Users/kvl/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# direnv hook for directory-specific environments
+eval "$(direnv hook zsh)"

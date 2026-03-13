@@ -7,6 +7,3 @@
 
 [[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
 
-if [ -f ~/.zshrc ]; then
-  source ~/.zshrc
-fi
