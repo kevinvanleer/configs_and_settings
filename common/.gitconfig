@@ -49,6 +49,7 @@
     cmd = meld $LOCAL $REMOTE
 [core]
     autocrlf = input
+	hooksPath = /Users/kvl/.git-hooks
 [includeif "gitdir:~/src/north-capital/**"]
     path = "~/src/north-capital/.gitconfig"
 [includeif "gitdir:~/src/273ventures/**"]
