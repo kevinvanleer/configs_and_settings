@@ -48,6 +48,9 @@ return {
   -- Project management
   { "dbakker/vim-projectroot" },
 
+  -- Git
+  { "ThePrimeagen/git-worktree.nvim" },
+
   -- Colors
   { "flazz/vim-colorschemes", config = function() 
       vim.cmd('colorscheme SlateDark')
