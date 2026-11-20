@@ -18,8 +18,6 @@ fi
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-  autoload -Uz compinit
-  compinit
 fi
 
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
@@ -73,3 +71,26 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # direnv hook for directory-specific environments
 eval "$(direnv hook zsh)"
+
+# AWS profile switcher (fzf-driven, falls back to select)
+awsp() {
+  local profile
+  if command -v fzf &>/dev/null; then
+    profile=$(aws configure list-profiles | fzf --prompt="AWS profile> " --height=40% --reverse) || return
+  else
+    select profile in $(aws configure list-profiles); do
+      break
+    done
+  fi
+  [ -z "$profile" ] && return
+  export AWS_PROFILE="$profile"
+  echo "AWS_PROFILE=$AWS_PROFILE"
+}
+alias awswho='aws sts get-caller-identity'
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+
+# opencode
+export PATH=/Users/kvl/.opencode/bin:$PATH
+
+# cmdlog
+export PATH="$HOME/bin:$PATH"
