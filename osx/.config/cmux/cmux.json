@@ -147,10 +147,7 @@
 
   "shortcuts": {
     "bindings": {
-      "focusUp":    "alt+w",
-      "focusLeft":  "alt+a",
-      "focusDown":  "alt+s",
-      "focusRight": "alt+d"
+      "selectSurfaceByNumber": "cmd+opt+1"
     }
   },
 
