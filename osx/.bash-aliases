@@ -45,3 +45,5 @@ alias proctor='${HOME}/src/everything/scripts/proctor'
 alias reset-camera='sudo killall VDCAssistant'
 
 alias add-vpn-route='sudo route -n add -net 10.1.0.0/16 10.0.255.1'
+
+alias sqlite3='rlwrap sqlite3'

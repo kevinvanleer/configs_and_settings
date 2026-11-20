@@ -5,7 +5,6 @@ yabai -m config                                 \
         focus_follows_mouse     off             \
         mouse_follows_focus     off             \
         window_placement        second_child    \
-        window_topmost          off             \
         layout                  bsp             \
         top_padding             0               \
         bottom_padding          0               \
@@ -14,11 +13,7 @@ yabai -m config                                 \
         window_gap              0               \
         window_opacity          on              \
         active_window_opacity   1.0             \
-        normal_window_opacity   0.9             \
-        window_border           on              \
-        window_border_width     2               \
-        active_window_border_color 0xff00ff00   \
-        normal_window_border_color 0x22ffffff
+        normal_window_opacity   0.9
 
 # float system preferences
 yabai -m rule --add app='^System Information$' manage=off

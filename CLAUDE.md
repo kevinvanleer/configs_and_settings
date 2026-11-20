@@ -17,7 +17,7 @@ The install script symlinks files from `common/` and the platform-specific direc
 ## Structure
 
 - `common/` — Cross-platform configs (`.gitconfig`)
-- `osx/` — macOS-specific: zsh configs (`.zshrc`, `.zprofile`, `.zalias`), bash configs (`.bashrc`, `.bash-aliases`, `.profile`), yabai WM (`.yabairc`), skhd hotkeys (`.skhdrc`), Alacritty terminal (`.alacritty.yml`)
+- `osx/` — macOS-specific: zsh configs (`.zshrc`, `.zprofile`, `.zalias`), bash configs (`.bashrc`, `.bash-aliases`, `.profile`), yabai WM (`.yabairc`), skhd hotkeys (`.skhdrc`), cmux terminal (`.config/cmux/cmux.json`), Alacritty terminal (`.alacritty.yml`)
 - `ubuntu/` — Ubuntu-specific: bash configs (`.bashrc`, `.bash_aliases`)
 
 ## Key Details
